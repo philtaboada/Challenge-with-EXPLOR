@@ -1,7 +1,35 @@
-#ignore this in github
-
-# environment variables
-.env
-
-#Cache folders
+# Python caches
 __pycache__/
+*.py[cod]
+
+# Environment variables
+.env
+.env.example
+
+# Logs
+*.log
+
+# Virtual environments
+venv/
+env/
+
+# Python bytecode
+*.pyc
+*.pyo
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Test and coverage reports
+htmlcov/
+.coverage
+*.cover
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Docker and deployment
+docker-compose.override.yml
