@@ -1,6 +1,5 @@
 import os
 from crewai import Agent, Task, Crew, Process
-from langchain_openai import ChatOpenAI
 from decouple import config
 
 from textwrap import dedent
@@ -16,8 +15,8 @@ from langchain.tools import DuckDuckGoSearchRun
 
 search_tool = DuckDuckGoSearchRun()
 
-os.environ["OPENAI_API_KEY"] = config("OPENAI_API_KEY")
-os.environ["OPENAI_ORGANIZATION"] = config("OPENAI_ORGANIZATION_ID")
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+os.environ["OPENAI_ORGANIZATION"] = os.getenv("OPENAI_ORGANIZATION_ID")
 
 # This is the main class that you will use to define your custom crew.
 # You can define as many agents and tasks as you want in agents.py and tasks.py
