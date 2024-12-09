@@ -196,3 +196,37 @@ Add a title, description, and assign reviewers if applicable.
 Submit the pull request.
 
 
+Developing Guidelines using poetry:
+=====================================
+
+First, install Poetry
+
+
+```bash	
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+```
+
+Second, verify that it is installed
+
+```bash
+poetry --versión
+```
+(If you encounter an error, fix the issue or contact me)
+
+Third, install the dependencies using
+
+```bash
+poetry install --no-root
+```
+
+Fourth, start the environment
+
+```bash
+poetry Shell
+```
+
+Fifth, run it
+
+```bash
+poetry run python main.py
+```
