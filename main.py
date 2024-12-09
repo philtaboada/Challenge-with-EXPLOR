@@ -1,7 +1,7 @@
 import os
 from crewai import Agent, Task, Crew, Process
-from langchain_openai import ChatOpenAI
 from decouple import config
+
 
 from textwrap import dedent
 from agents import CustomAgents
