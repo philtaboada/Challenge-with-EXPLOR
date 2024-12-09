@@ -142,10 +142,10 @@ Step 3: Create a new branch for your project using the following command in your
 Directory and Branch:
 
 The terminal shows git status with the output:
-vbnet
-Copy code
+```bash
 On branch main
 Your branch is up to date with 'origin/main'.
+```
 This confirms you're in the Git repository and on the main branch.
 Git Version:
 
@@ -155,14 +155,14 @@ What You Can Do Next
 1. Create a New Branch
 To work on a new feature or task:
 
-bash
-Copy code
+```bash
 git checkout -b feature/your-branch-name
+```
 Example:
 
-bash
-Copy code
+```bash
 git checkout -b feature/checking_features_built
+```
 This creates and switches to a new branch.
 
 2. Make Changes
@@ -171,24 +171,24 @@ Save your changes.
 3. Check the Status
 To see what changes have been made:
 
-bash
-Copy code
+```bash
 git status
+```
 4. Stage and Commit Changes
 Stage all the changes:
-bash
-Copy code
+```bash
 git add .
+```
 Commit with a message:
-bash
-Copy code
+```bash
 git commit -m "Added new feature to check built features"
+```
 5. Push the Branch to GitHub
 Push your branch to the remote repository:
 
-bash
-Copy code
+```bash
 git push origin feature/checking_features_built
+```
 6. Create a Pull Request (PR)
 Go to the GitHub repository in your browser.
 You’ll see an option to create a pull request for your new branch.
