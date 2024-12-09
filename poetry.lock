@@ -380,17 +380,6 @@ files = [
 ]
 
 [[package]]
-name = "config"
-version = "0.5.1"
-description = "A hierarchical, easy-to-use, powerful configuration module for Python"
-optional = false
-python-versions = "*"
-files = [
-    {file = "config-0.5.1-py2.py3-none-any.whl", hash = "sha256:79ffa009ff2663cc8ca29e56bcec031c044609d4bafaa4f884132a413101ce84"},
-    {file = "config-0.5.1.zip", hash = "sha256:2dd4a03aa383d30711d5a3325a1858de225328d61950a85be5b74c100f63016d"},
-]
-
-[[package]]
 name = "crewai"
 version = "0.1.24"
 description = "Cutting-edge framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks."
@@ -420,16 +409,6 @@ files = [
 [package.dependencies]
 marshmallow = ">=3.18.0,<4.0.0"
 typing-inspect = ">=0.4.0,<1"
-
-[[package]]
-name = "decouple"
-version = "0.0.7"
-description = "Decoupling logic"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "decouple-0.0.7.tar.gz", hash = "sha256:c253c1cc62b76e9720a066f334552548c6de1884bc3bdf456ddb62d61b867b09"},
-]
 
 [[package]]
 name = "distro"
@@ -2428,4 +2407,4 @@ propcache = ">=0.2.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10.0,<3.13"
-content-hash = "c6ca6996deeefdea60dc7aa9e1e810f00e0c7436c75ca7ca0cce3be8217c85e5"
+content-hash = "36ff4c6b740879014016c5eface67c68b2b660ecf44bc8d90fcbad2c4c832874"

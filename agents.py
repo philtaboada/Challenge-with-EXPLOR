@@ -29,12 +29,13 @@ class CustomAgents:
             llm=self.groq_llama,
         )
 
-    def EventNormalizer(self):
+    def agent_2_name(self):
         return Agent(
-            role="Cycling Event Normalizer",
-            backstory=dedent("""This agent collects and normalizes cycling event data. It processes the raw data received from the QueryBot, standardizing the format, cleaning the information, and making it ready for further analysis or display. It helps ensure that event data is consistent and well-organized."""),
-            goal=dedent("""The goal of the agent is to normalize the raw data of cycling events collected by the QueryBot. It standardizes the event data, ensuring consistency in formatting, location names, dates, and other important event details. The agent prepares the data for future use in filtering, recommendation, or reporting."""),
+            role="Define agent 2 role here",
+            backstory=dedent(f"""Define agent 2 backstory here"""),
+            goal=dedent(f"""Define agent 2 goal here"""),
+            # tools=[tool_1, tool_2],
             allow_delegation=False,
             verbose=True,
-            llm=self.groq_mixtral,
+            llm=self.OpenAIGPT35,
         )
