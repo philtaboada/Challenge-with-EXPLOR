@@ -17,6 +17,8 @@ class CustomCrew:
     def __init__(self, var1, var2):
         self.var1 = var1
         self.var2 = var2
+        self.location = location
+        self.date = date
 
     def run(self):
         # Define your custom agents and tasks in agents.py and tasks.py
@@ -25,7 +27,7 @@ class CustomCrew:
 
         # Define your custom agents and tasks here
         custom_agent_1 = agents.agent_1_name()
-        custom_agent_2 = agents.agent_2_name()
+        custom_agent_2 = agents.agents.EventNormalizer() #AgentNormalizer
 
         # Custom tasks include agent name and variables as input
         custom_task_1 = tasks.task_1_name(
@@ -34,8 +36,10 @@ class CustomCrew:
             self.var2,
         )
 
-        custom_task_2 = tasks.task_2_name(
+        custom_task_2 = tasks.CustomTaskForEventNormalizer( 
             custom_agent_2,
+            self.location,
+            self.date,
         )
 
         # Define your custom crew here
