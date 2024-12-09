@@ -1,157 +1,190 @@
-# tasks.py
 from crewai import Task
 from textwrap import dedent
-from agent_manager import AgentManager
+from agents import AgentManager  # Assuming you have the complete agents.py file
 
 class CustomTasks:
-    def __init__(self, agent_manager: AgentManager):
+    def __init__(self):
         """
         Initialize the CustomTasks class with an instance of AgentManager.
-        
-        :param agent_manager: An instance of AgentManager for managing and retrieving agents.
         """
-        self.agent_manager = agent_manager
+        self.agent_manager = AgentManager()
 
     def __tip_section(self):
         """
         Provide a motivational tip or message for tasks.
         """
-        return "If you do your BEST WORK, I'll give you a $10,000 commission!"
+        return "Remember: Collaboration and precision lead to great results!"
 
-    def task_1_name(self, agent_name, var1, var2):
+    def task_1_define_event(self):
         """
-        Define task 1 and assign it to a specific agent.
+        Define task 1: Event creation and configuration.
         
-        :param agent_name: Name of the agent responsible for this task.
-        :param var1: First variable for the task.
-        :param var2: Second variable for the task.
-        :return: A Task object.
+        :return: A Task object for event definition.
         """
+        agent_name = "event_coordinator"
         agent = self.agent_manager.get_agent(agent_name)
         if agent is None:
             raise ValueError(f"Agent '{agent_name}' not found in AgentManager.")
 
+        location = "San Francisco, CA"
+        date = "2024-12-15"
+        organizer = "Cycling Club"
+        event_type = "Cycling Race"
+        surface = "Road"
+        registration_link = "https://example.com/register"
+        route_name = "Golden Gate Bridge Loop"
+        route_length = 50  # km
+        route_map = "https://example.com/map"
+        route_elevation = 150  # meters
+
         return Task(
             description=dedent(
                 f"""
-                Task 1: Perform specific operations with agent {agent_name}.
-                
-                {self.__tip_section()}
+                Task 1: Define a cycling event.
 
-                Use these variables:
-                  - Variable 1: {var1}
-                  - Variable 2: {var2}
-                
-                Ensure to process the most recent cycling event data available.
+                Event Details:
+                - Location: {location}
+                - Date: {date}
+                - Organizer: {organizer}
+                - Event Type: {event_type}
+                - Surface Type: {surface}
+                - Route Name: {route_name}
+                - Route Length: {route_length} km
+                - Route Elevation: {route_elevation} meters
+
+                Useful Links:
+                - Registration Link: {registration_link}
+                - Route Map: {route_map}
+
+                {self.__tip_section()}
                 """
             ),
-            expected_output="Processed event data output",
+            expected_output="A fully defined event with all necessary details.",
             agent=agent,
         )
 
-    def task_2_name(self, agent_name, location, date, organizer, event_type, surface, registration_link, route_name, route_length, route_map, route_elevation):
+    def task_2_analyze_data(self):
         """
-        Normalize and process event data from various input sources.
+        Define task 2: Analyze event-related data.
         
-        :param agent_name: Name of the agent responsible for this task.
-        :param location: The event's location.
-        :param date: The event's date.
-        :param organizer: Name of the event organizer.
-        :param event_type: The type of cycling event (e.g., race, ride, etc.).
-        :param surface: Type of surface for the event (e.g., road, gravel, etc.).
-        :param registration_link: Link to register for the event.
-        :param route_name: Name of the route for the event.
-        :param route_length: Length of the route in kilometers.
-        :param route_map: Link to the route map.
-        :param route_elevation: Elevation of the route in meters.
-        
-        :return: A Task object with cleaned event data.
+        :return: A Task object for data analysis.
         """
+        agent_name = "gpt3.5"
         agent = self.agent_manager.get_agent(agent_name)
         if agent is None:
             raise ValueError(f"Agent '{agent_name}' not found in AgentManager.")
 
-        # Normalizing event information
-        normalized_event = {
-            "event_name": "Cycling Event in Nigeria",
-            "location": location,
-            "date": date,
-            "organizer": organizer,
-            "event_type": event_type,
-            "surface": surface,
-            "registration_link": registration_link,
-        }
-
-        # Normalizing route information
-        route_info = {
-            "route_name": route_name,
-            "route_length": route_length,
-            "route_map": route_map,
-            "route_elevation": route_elevation,
-        }
-
-        # Clean the event data
-        cleaned_event_data = self.clean_event_data(normalized_event, route_info)
+        event_data = {"participants": 100, "feedback": "positive"}
 
         return Task(
             description=dedent(
                 f"""
-                Normalize and store event data:
-                Event details: {cleaned_event_data['event_name']} at {cleaned_event_data['location']} on {cleaned_event_data['date']}
-                
-                {self.__tip_section()}
+                Task 2: Analyze event data to extract meaningful insights.
 
-                Ensure that all event data is cleaned and ready for further processing or storage.
+                Data Source:
+                - Participant count: {event_data['participants']}
+                - Feedback summary: {event_data['feedback']}
+
+                Responsibilities:
+                - Analyze participant trends.
+                - Identify performance metrics.
+                - Generate actionable insights for event improvement.
+
+                {self.__tip_section()}
                 """
             ),
-            expected_output="Cleaned event data",
+            expected_output="Insights and recommendations based on the analyzed data.",
             agent=agent,
         )
 
-    def task_3_name(self, agent_name, additional_info):
+    def task_3_generate_content(self):
         """
-        Perform complex processing or aggregation of data.
+        Define task 3: Generate promotional content for the event.
         
-        :param agent_name: Name of the agent responsible for this task.
-        :param additional_info: Additional parameters or info for task processing.
-        :return: A Task object with processed data output.
+        :return: A Task object for content generation.
         """
+        agent_name = "ollama"
         agent = self.agent_manager.get_agent(agent_name)
         if agent is None:
             raise ValueError(f"Agent '{agent_name}' not found in AgentManager.")
 
-        # Example complex processing or aggregation (can be extended as per project needs)
-        processed_data = f"Processed data based on {additional_info}."
+        event_name = "Golden Gate Cycling Challenge"
+        key_highlights = "Scenic views, challenging routes, professional organization."
+        target_audience = "Professional cyclists and cycling enthusiasts."
 
         return Task(
             description=dedent(
                 f"""
-                Perform complex aggregation or data processing using the provided information:
-                
+                Task 3: Generate promotional content for '{event_name}'.
+
+                Event Highlights:
+                - {key_highlights}
+
+                Target Audience:
+                - {target_audience}
+
+                Objective:
+                - Create engaging and persuasive content to promote the event.
+
                 {self.__tip_section()}
-                
-                Data to be processed: {additional_info}
                 """
             ),
-            expected_output="Processed complex data",
+            expected_output="A marketing-ready content piece for the event.",
             agent=agent,
         )
 
-    def clean_event_data(self, event_data, route_data):
+    def batch_task_execution(self):
         """
-        Clean and normalize the event and route data.
+        Execute a batch of tasks sequentially or concurrently using agents.
         
-        :param event_data: Raw event data.
-        :param route_data: Raw route data.
-        :return: A dictionary with cleaned event and route data.
+        :return: A Task object for batch processing.
         """
-        cleaned_event = {
-            "event": event_data,
-            "route": route_data,
-            "status": "cleaned",
-        }
+        agent_name = "gpt4"
+        agent = self.agent_manager.get_agent(agent_name)
+        if agent is None:
+            raise ValueError(f"Agent '{agent_name}' not found in AgentManager.")
 
-        # Implement cleaning logic here, such as removing invalid data
-        # Example: removing any empty fields or correcting date formats
+        tasks = [
+            self.task_1_define_event(),
+            self.task_2_analyze_data(),
+            self.task_3_generate_content()
+        ]
 
-        return cleaned_event
+        task_descriptions = "\n".join([f"Task {i+1}: {task.description}" for i, task in enumerate(tasks)])
+
+        return Task(
+            description=dedent(
+                f"""
+                Execute a batch of tasks using the assigned agent.
+
+                Tasks:
+                {task_descriptions}
+
+                {self.__tip_section()}
+                """
+            ),
+            expected_output="Batch tasks executed successfully.",
+            agent=agent,
+        )
+
+
+# Example Usage
+if __name__ == "__main__":
+    # Initialize the CustomTasks
+    custom_tasks = CustomTasks()
+
+    # Execute Task 1: Define Event
+    task1 = custom_tasks.task_1_define_event()
+    print(f"Task 1 Description:\n{task1.description}\n")
+
+    # Execute Task 2: Analyze Data
+    task2 = custom_tasks.task_2_analyze_data()
+    print(f"Task 2 Description:\n{task2.description}\n")
+
+    # Execute Task 3: Generate Content
+    task3 = custom_tasks.task_3_generate_content()
+    print(f"Task 3 Description:\n{task3.description}\n")
+
+    # Execute Batch Task Execution
+    batch_task = custom_tasks.batch_task_execution()
+    print(f"Batch Task Execution Description:\n{batch_task.description}\n")
