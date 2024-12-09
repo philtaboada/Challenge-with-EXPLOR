@@ -2,6 +2,7 @@ import os
 from crewai import Agent, Task, Crew, Process
 from decouple import config
 
+
 from textwrap import dedent
 from agents import CustomAgents
 from tasks import CustomTasks
