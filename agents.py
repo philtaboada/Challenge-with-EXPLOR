@@ -26,7 +26,7 @@ class CustomAgents:
             goal=dedent(f"""The goal of the agent is to provide an up-to-date and accurate list of cycling events in Peru. The agent searches, filters, and presents relevant events based on the user's requirements, such as location, event type, dates, and difficulty level. Its mission is to help cyclists and sports enthusiasts quickly find events that match their interests and abilities."""),
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.groq_llama,
         )
 
     def agent_2_name(self):
